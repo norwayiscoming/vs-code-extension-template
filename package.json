@@ -1,0 +1,113 @@
+{
+  "name": "my-vscode-extension",
+  "displayName": "My VS Code Extension",
+  "description": "A VS Code extension built from the open template",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/my-vscode-extension"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [],
+  "icon": "media/icon.png",
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "myExtension.helloWorld",
+        "title": "Hello World",
+        "category": "My Extension"
+      },
+      {
+        "command": "myExtension.showPanel",
+        "title": "Show Panel",
+        "category": "My Extension"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "myExtensionSidebar",
+          "title": "My Extension",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "myExtensionSidebar": [
+        {
+          "id": "myExtension.treeView",
+          "name": "Explorer",
+          "type": "tree"
+        },
+        {
+          "id": "myExtension.webviewView",
+          "name": "Details",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "My Extension",
+      "properties": {
+        "myExtension.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the extension features"
+        },
+        "myExtension.logLevel": {
+          "type": "string",
+          "default": "info",
+          "enum": ["debug", "info", "warn", "error"],
+          "description": "Set the logging level"
+        }
+      }
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "myExtension.helloWorld",
+          "when": "view == myExtension.treeView",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "test": "vscode-test",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@stylistic/eslint-plugin": "^2.9.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^22",
+    "@types/vscode": "^1.100.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.13.0",
+    "mocha": "^10.2.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,117 @@
+/* ─── VS Code Webview Styles ──────────────────────────────────────── */
+/* Uses VS Code CSS variables for automatic theme support. */
+
+:root {
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  color: var(--vscode-foreground);
+  background-color: var(--vscode-sideBar-background, transparent);
+  padding: var(--spacing-md);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  color: var(--vscode-foreground);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--vscode-descriptionForeground);
+}
+
+code {
+  font-family: var(--vscode-editor-font-family);
+  font-size: var(--vscode-editor-font-size);
+  background: var(--vscode-textCodeBlock-background);
+  padding: 2px 6px;
+  border-radius: var(--radius);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+button:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+button:focus-visible {
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: 2px;
+}
+
+button.secondary {
+  background: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+}
+
+button.secondary:hover {
+  background: var(--vscode-button-secondaryHoverBackground);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: var(--radius);
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 1px solid var(--vscode-focusBorder);
+  border-color: var(--vscode-focusBorder);
+}
+
+input::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+#output {
+  padding: var(--spacing-sm);
+  min-height: 40px;
+  border-radius: var(--radius);
+  background: var(--vscode-textCodeBlock-background);
+  font-family: var(--vscode-editor-font-family);
+  font-size: var(--vscode-editor-font-size);
+  white-space: pre-wrap;
+}
