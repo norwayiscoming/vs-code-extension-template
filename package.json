@@ -1,21 +1,39 @@
 {
-  "name": "my-vscode-extension",
-  "displayName": "My VS Code Extension",
-  "description": "A VS Code extension built from the open template",
-  "version": "0.0.1",
-  "publisher": "your-publisher-id",
+  "name": "teamshare",
+  "displayName": "TeamShare - Claude Code Session Intelligence",
+  "description": "Multi-user session intelligence for Claude Code. Track who's doing what, search across sessions, prevent conflicts.",
+  "version": "0.1.0",
+  "publisher": "NorwayIsHere",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/my-vscode-extension"
+    "url": "https://github.com/norwayiscoming/vs-code-extension-template"
+  },
+  "homepage": "https://github.com/norwayiscoming/vs-code-extension-template#readme",
+  "bugs": {
+    "url": "https://github.com/norwayiscoming/vs-code-extension-template/issues"
   },
   "engines": {
     "vscode": "^1.100.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Machine Learning"
   ],
-  "keywords": [],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "collaboration",
+    "team",
+    "session",
+    "multi-agent",
+    "anthropic"
+  ],
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
   "icon": "media/icon.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
@@ -24,19 +42,46 @@
       {
         "command": "myExtension.helloWorld",
         "title": "Hello World",
-        "category": "My Extension"
+        "category": "TeamShare"
       },
       {
         "command": "myExtension.showPanel",
         "title": "Show Panel",
-        "category": "My Extension"
+        "category": "TeamShare"
+      },
+      {
+        "command": "myExtension.sessions.search",
+        "title": "Search Sessions",
+        "category": "TeamShare",
+        "icon": "$(search)"
+      },
+      {
+        "command": "myExtension.sessions.refresh",
+        "title": "Refresh Sessions",
+        "category": "TeamShare",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "myExtension.sessions.reindex",
+        "title": "Rebuild Search Index",
+        "category": "TeamShare"
+      },
+      {
+        "command": "myExtension.sessions.identify",
+        "title": "Set User Identity",
+        "category": "TeamShare"
+      },
+      {
+        "command": "myExtension.sessions.indexFile",
+        "title": "Index Session File",
+        "category": "TeamShare"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
           "id": "myExtensionSidebar",
-          "title": "My Extension",
+          "title": "TeamShare",
           "icon": "media/sidebar-icon.svg"
         }
       ]
@@ -52,11 +97,16 @@
           "id": "myExtension.webviewView",
           "name": "Details",
           "type": "webview"
+        },
+        {
+          "id": "myExtension.sessionTree",
+          "name": "Sessions",
+          "type": "tree"
         }
       ]
     },
     "configuration": {
-      "title": "My Extension",
+      "title": "TeamShare",
       "properties": {
         "myExtension.enabled": {
           "type": "boolean",
@@ -68,6 +118,27 @@
           "default": "info",
           "enum": ["debug", "info", "warn", "error"],
           "description": "Set the logging level"
+        },
+        "teamshare.sessionIntelligence.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable session intelligence module"
+        },
+        "teamshare.sessionIntelligence.embedding.provider": {
+          "type": "string",
+          "default": "none",
+          "enum": ["none", "openai", "ollama", "voyage"],
+          "description": "Embedding provider for semantic search (optional)"
+        },
+        "teamshare.sessionIntelligence.embedding.model": {
+          "type": "string",
+          "default": "text-embedding-3-small",
+          "description": "Embedding model name"
+        },
+        "teamshare.sessionIntelligence.embedding.dimensions": {
+          "type": "number",
+          "default": 256,
+          "description": "Embedding vector dimensions"
         }
       }
     },
@@ -76,6 +147,16 @@
         {
           "command": "myExtension.helloWorld",
           "when": "view == myExtension.treeView",
+          "group": "navigation"
+        },
+        {
+          "command": "myExtension.sessions.search",
+          "when": "view == myExtension.sessionTree",
+          "group": "navigation"
+        },
+        {
+          "command": "myExtension.sessions.refresh",
+          "when": "view == myExtension.sessionTree",
           "group": "navigation"
         }
       ]

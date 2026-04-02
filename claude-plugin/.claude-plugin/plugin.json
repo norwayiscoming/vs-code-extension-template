@@ -1,0 +1,9 @@
+{
+  "name": "teamshare",
+  "version": "0.1.0",
+  "description": "Multi-user session intelligence for Claude Code. Track who's doing what, search across sessions, prevent conflicts.",
+  "author": {
+    "name": "NorwayIsHere",
+    "email": "phuonganhnn25.3@gmail.com"
+  }
+}

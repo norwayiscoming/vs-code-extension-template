@@ -14,6 +14,8 @@ import {
   codeActionsModule,
   decorationsModule,
 } from "./providers";
+import { pluginBridgeModule } from "./modules/teamshare/plugin-bridge";
+import { sessionIntelligenceModule } from "./modules/teamshare/session-intelligence";
 
 // ─── Module Registry ───────────────────────────────────────────────
 // Add or remove modules here to enable/disable features.
@@ -25,6 +27,9 @@ const modules: ExtensionModule[] = [
   statusBarModule,
   treeViewModule,
   webviewViewModule,
+  // ── TeamShare modules ──
+  pluginBridgeModule,
+  sessionIntelligenceModule,
   // ── Optional modules (uncomment to enable) ──
   completionModule,
   codeLensModule,
